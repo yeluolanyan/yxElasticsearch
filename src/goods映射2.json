@@ -1,0 +1,42 @@
+//curl -XPUT  http://192.168.1.99:9200/categoryindex/goodscategory 创建所有的商品类
+//goods商品映射
+curl -XPOST  http://192.168.1.99:9200/goodsindex/goods/_mapping -d'{
+  "goods": {
+    "_all": {
+      "enabled": true,
+      "analyzer": "ik_max_word",
+      "search_analyzer": "ik_max_word",
+      "term_vector": "no",
+      "store": "false"
+    },
+    "properties": {
+      "title": {
+        "type": "string",
+        "term_vector": "with_positions_offsets",
+        "analyzer": "ik_syno",
+        "search_analyzer": "ik_syno"
+      },
+      "content": {
+        "type": "string",
+        "term_vector": "with_positions_offsets",
+        "analyzer": "ik_syno",
+        "search_analyzer": "ik_syno"
+      },
+      "tags": {
+        "type": "string",
+        "term_vector": "no",
+        "analyzer": "ik_syno",
+        "search_analyzer": "ik_syno"
+      },
+      "slug": {
+        "type": "string",
+        "term_vector": "no"
+      },
+      "update_date": {
+        "type": "date",
+        "term_vector": "no",
+        "index": "no"
+      }
+    }
+  }
+}'

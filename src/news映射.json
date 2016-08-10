@@ -1,0 +1,40 @@
+{
+  "news": {
+    "_all": {
+      "enabled": true,
+      "analyzer": "ik_max_word",
+      "search_analyzer": "ik_max_word",
+      "term_vector": "no",
+      "store": "false"
+    },
+    "properties": {
+      "id": {
+        "type": "integer",
+        "index": "not_analyzed",
+        "include_in_all": false
+      },
+      "title": {
+        "type": "string",
+        "store": "no",
+        "term_vector": "with_positions_offsets",
+        "analyzer": "ik_max_word",
+        "search_analyzer": "ik_max_word",
+        "include_in_all": true
+      },
+      "content": {
+        "type": "string",
+        "store": "no",
+        "term_vector": "with_positions_offsets",
+        "analyzer": "ik_max_word",
+        "search_analyzer": "ik_max_word",
+        "include_in_all": true
+      },
+      "createTime": {
+        "format": "yyy-MM-dd HH:mm:ss",
+        "type": "date",
+        "index": "not_analyzed",
+        "include_in_all": false
+      }
+    }
+  }
+}

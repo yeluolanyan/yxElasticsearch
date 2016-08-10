@@ -1,0 +1,108 @@
+//curl -XPUT  http://192.168.1.99:9200/categoryindex/goodscategory 创建所有的商品类
+//goods商品映射
+curl -XPOST  http://192.168.1.99:9200/goodsindex/goods/_mapping -d'{
+  "goods": {
+    "_all": {
+      "enabled": true,
+      "analyzer": "ik_max_word",
+      "search_analyzer": "ik_max_word",
+      "term_vector": "no",
+      "store": "false"
+    },
+    "properties": {
+      "id": {
+        "type": "integer",
+        "index": "not_analyzed",
+        "include_in_all": false
+      },
+      "goodsName": {
+        "type": "string",
+        "store": "no",
+        "term_vector": "with_positions_offsets",
+        "analyzer": "ik_max_word",
+        "search_analyzer": "ik_max_word",
+        "include_in_all": true
+      },
+      "shortName": {
+        "type": "string",
+        "store": "no",
+        "term_vector": "with_positions_offsets",
+        "analyzer": "ik_max_word",
+        "search_analyzer": "ik_max_word",
+        "include_in_all": true
+      },
+      "categoryName": {
+        "type": "string",
+        "store": "no",
+        "term_vector": "with_positions_offsets",
+        "analyzer": "ik_max_word",
+        "search_analyzer": "ik_max_word",
+        "include_in_all": true,
+        "boost": 8
+      },
+      "brandId": {
+        "type": "string",
+        "store": "no",
+        "term_vector": "with_positions_offsets",
+        "analyzer": "ik_max_word",
+        "search_analyzer": "ik_max_word",
+        "include_in_all": true
+      },
+      "labelPrice": {
+        "type": "float",
+        "index": "not_analyzed",
+        "include_in_all": false
+      },
+      "salePrice": {
+        "type": "float",
+        "index": "not_analyzed",
+        "include_in_all": false
+      },
+      "postage": {
+        "type": "float",
+        "index": "not_analyzed",
+        "include_in_all": false
+      },
+      "postageflag": {
+        "type": "boolean",
+        "index": "not_analyzed",
+        "include_in_all": false
+      },
+      "goodsDetail": {
+        "type": "string",
+        "store": "no",
+        "term_vector": "with_positions_offsets",
+        "analyzer": "ik_max_word",
+        "search_analyzer": "ik_max_word",
+        "include_in_all": true
+      },
+      "createTime": {
+        "format": "yyy-MM-dd HH:mm:ss",
+        "type": "date",
+        "index": "not_analyzed",
+        "include_in_all": false
+      },
+      "updateTime": {
+        "format": "yyy-MM-dd HH:mm:ss",
+        "type": "date",
+        "index": "not_analyzed",
+        "include_in_all": false
+      },
+      "goodsStatus": {
+        "type": "string",
+        "index": "not_analyzed",
+        "include_in_all": false
+      },
+      "resourceFrom": {
+        "type": "string",
+        "index": "not_analyzed",
+        "include_in_all": false
+      },
+      "qualityFlag": {
+        "type": "string",
+        "index": "not_analyzed",
+        "include_in_all": false
+      }
+    }
+  }
+}'
